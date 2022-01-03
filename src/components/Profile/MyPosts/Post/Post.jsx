@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Post.module.css";
 
-const Post = () => {
+const Post = ({ message }) => {
   return (
     <div>
       <img
@@ -9,9 +9,9 @@ const Post = () => {
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSycH9-IJcnOZbAkkoJwC5VDKpq8NWqV7NJ2A&usqp=CAU"
         alt="icon"
       />
-      post 2
+      {message}
       <div>
-        <span>like</span>
+        <span>like: </span>
       </div>
     </div>
   );
