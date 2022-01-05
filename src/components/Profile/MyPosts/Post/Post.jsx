@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Post.module.css";
 
-const Post = ({ message }) => {
+const Post = ({ message, likeCount }) => {
   return (
     <div>
       <img
@@ -11,7 +11,7 @@ const Post = ({ message }) => {
       />
       {message}
       <div>
-        <span>like: </span>
+        <span>like: {likeCount} </span>
       </div>
     </div>
   );

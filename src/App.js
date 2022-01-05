@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 
-function App() {
+function App({ state, addPost, UpdateNewPostText }) {
   return (
     <BrowserRouter>
       <div className="app__wrapper">
@@ -13,8 +13,20 @@ function App() {
         <Navbar />
         <div className="app__wrapper__content">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} />
-            <Route path="/profile/*" element={<Profile />} />
+            <Route
+              path="/dialogs/*"
+              element={<Dialogs state={state.dialogsPage} />}
+            />
+            <Route
+              path="/profile/*"
+              element={
+                <Profile
+                  state={state.profilePage}
+                  addPost={addPost}
+                  UpdateNewPostText={UpdateNewPostText}
+                />
+              }
+            />
           </Routes>
         </div>
       </div>
