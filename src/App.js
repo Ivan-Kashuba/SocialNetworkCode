@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 
-function App({ state, addPost, UpdateNewPostText }) {
+function App({ state, dispatch, store }) {
   return (
     <BrowserRouter>
       <div className="app__wrapper">
@@ -15,16 +15,14 @@ function App({ state, addPost, UpdateNewPostText }) {
           <Routes>
             <Route
               path="/dialogs/*"
-              element={<Dialogs state={state.dialogsPage} />}
+              element={
+                <Dialogs state={state.dialogsPage} dispatch={dispatch} />
+              }
             />
             <Route
               path="/profile/*"
               element={
-                <Profile
-                  state={state.profilePage}
-                  addPost={addPost}
-                  UpdateNewPostText={UpdateNewPostText}
-                />
+                <Profile state={state.profilePage} dispatch={dispatch} />
               }
             />
           </Routes>
