@@ -3,12 +3,12 @@ const ADD_MESSAGE = "ADD-MESSAGE";
 
 let initialState = {
   dialogsData: [
-    { urlNumber: 1, name: "Vantus" },
-    { urlNumber: 2, name: "Valera" },
-    { urlNumber: 3, name: "Yonchi" },
-    { urlNumber: 4, name: "Anya" },
-    { urlNumber: 5, name: "Lubov" },
-    { urlNumber: 6, name: "Sofa" },
+    { id: 1, name: "Vantus" },
+    { id: 2, name: "Valera" },
+    { id: 3, name: "Yonchi" },
+    { id: 4, name: "Anya" },
+    { id: 5, name: "Lubov" },
+    { id: 6, name: "Sofa" },
   ],
 
   messagesData: [
@@ -21,18 +21,17 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      return state;
-    case ADD_MESSAGE:
-      let newMessage = {
-        id: 4,
-        message: state.newMessageText,
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      return { ...state, newMessageText: action.newText };
+    }
+    case ADD_MESSAGE: {
+      let text = state.newMessageText;
+      return {
+        ...state,
+        newMessageText: "",
+        messagesData: [...state.messagesData, { id: 4, message: text }],
       };
-
-      state.messagesData.push(newMessage);
-      state.newMessageText = "";
-      return state;
+    }
     default:
       return state;
   }

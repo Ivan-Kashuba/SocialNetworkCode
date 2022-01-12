@@ -1,34 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
+import UsersContainer from "./components/Users/UsersContainer";
 
-function App({ state, dispatch, store }) {
+function App() {
   return (
-    <BrowserRouter>
-      <div className="app__wrapper">
-        <Header />
-        <Navbar />
-        <div className="app__wrapper__content">
-          <Routes>
-            <Route
-              path="/dialogs/*"
-              element={
-                <Dialogs state={state.dialogsPage} dispatch={dispatch} />
-              }
-            />
-            <Route
-              path="/profile/*"
-              element={
-                <Profile state={state.profilePage} dispatch={dispatch} />
-              }
-            />
-          </Routes>
-        </div>
+    <div className="app__wrapper">
+      <Header />
+      <Navbar />
+      <div className="app__wrapper__content">
+        <Routes>
+          <Route path="/dialogs/*" element={<DialogsContainer />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/users/*" element={<UsersContainer />} />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
