@@ -40,9 +40,9 @@ const Navbar = () => {
           className={(navData) =>
             navData.isActive ? styles.activeItem : styles.item
           }
-          to="/music"
+          to="/users"
         >
-          Music
+          Users
         </NavLink>
       </div>
       <div>

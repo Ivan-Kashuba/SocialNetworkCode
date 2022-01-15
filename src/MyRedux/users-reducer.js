@@ -1,71 +1,71 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
-const SET_USERS = "SET-USERS";
+const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS = "SET_TOTAL_USERS";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+
 let initialState = {
-  users: [
-    {
-      id: 1,
-      followed: false,
-      fullName: "Ivan",
-      status: "I am a FrontEnd developer",
-      location: { city: "Uzhhorod", country: "Ukraine" },
-    },
-    {
-      id: 2,
-      followed: true,
-      fullName: "Sasha",
-      status: "I am a callCenter boss",
-      location: { city: "Uzhhorod", country: "Lviv" },
-    },
-    {
-      id: 3,
-      followed: false,
-      fullName: "Ilya",
-      status: "I am a fulStack dev",
-      location: { city: "Uzhhorod", country: "Kyiv" },
-    },
-  ],
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FOLLOW: {
+    case FOLLOW:
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
-            return { ...user, folowed: true };
+          if (user.id === action.userId) {
+            return { ...user, followed: true };
           }
           return user;
         }),
       };
-    }
-
-    case UNFOLLOW: {
+    case UNFOLLOW:
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
-            return { ...user, folowed: false };
+          if (user.id === action.userId) {
+            return { ...user, followed: false };
           }
           return user;
         }),
       };
-    }
     case SET_USERS: {
-      return { ...state, users: [...state.users, ...action.users] };
+      return { ...state, users: action.users };
+    }
+    case SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.currentPage };
+    }
+    case SET_TOTAL_USERS: {
+      return { ...state, totalUsersCount: action.totalUsersCount };
+    }
+    case TOGGLE_IS_FETCHING: {
+      return { ...state, isFetching: action.isFetching };
     }
     default:
       return state;
   }
 };
 
-export const followActionCreator = (userID) => ({ type: FOLLOW, userID });
-
-export const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
-
-export const setUsersActionCreator = () => ({
-  type: SET_USERS,
+export const followActionCreator = (userId) => ({ type: FOLLOW, userId });
+export const unfollowActionCreator = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageActionCreator = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
+  type: SET_TOTAL_USERS,
+  totalUsersCount,
+});
+export const toggleIsFetchingActionCreator = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
 });
 
 export default usersReducer;

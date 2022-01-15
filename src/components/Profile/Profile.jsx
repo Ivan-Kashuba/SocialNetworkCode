@@ -3,14 +3,12 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import styles from "./Profile.module.css";
 
-const Profile = () => {
+const Profile = (props) => {
   return (
-    <>
-      <div>
-        <ProfileInfo />
-        <MyPostsContainer />
-      </div>
-    </>
+    <div>
+      <ProfileInfo profile={props.profile} />
+      <MyPostsContainer />
+    </div>
   );
 };
 
