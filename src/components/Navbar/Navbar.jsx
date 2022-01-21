@@ -8,28 +8,22 @@ const Navbar = () => {
       <div className={styles.itemm}>
         <NavLink
           to="/profile"
-          className={(navData) =>
-            navData.isActive ? styles.activeItem : styles.item
-          }
+          className={(isActive) => (isActive ? styles.activeItem : styles.item)}
         >
           Profile
         </NavLink>
       </div>
       <div>
         <NavLink
-          className={(navData) =>
-            navData.isActive ? styles.activeItem : styles.item
-          }
           to="/dialogs"
+          className={(isActive) => (isActive ? styles.activeItem : styles.item)}
         >
           Messages
         </NavLink>
       </div>
       <div>
         <NavLink
-          className={(navData) =>
-            navData.isActive ? styles.activeItem : styles.item
-          }
+          className={(isActive) => (isActive ? styles.activeItem : styles.item)}
           to="/news"
         >
           News
@@ -37,9 +31,7 @@ const Navbar = () => {
       </div>
       <div>
         <NavLink
-          className={(navData) =>
-            navData.isActive ? styles.activeItem : styles.item
-          }
+          className={(isActive) => (isActive ? styles.activeItem : styles.item)}
           to="/users"
         >
           Users
@@ -47,9 +39,7 @@ const Navbar = () => {
       </div>
       <div>
         <NavLink
-          className={(navData) =>
-            navData.isActive ? styles.activeItem : styles.item
-          }
+          className={(isActive) => (isActive ? styles.activeItem : styles.item)}
           to="/settings"
         >
           Settings

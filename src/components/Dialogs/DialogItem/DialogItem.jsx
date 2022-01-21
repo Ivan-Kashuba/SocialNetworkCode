@@ -7,9 +7,7 @@ const DialogItem = ({ name, id }) => {
     <div className={`${styles.dialog} ${styles.active}`}>
       <NavLink
         to={"/dialogs/" + id}
-        className={(dialog) =>
-          dialog.isActive ? styles.active : styles.dialog
-        }
+        className={(isActive) => (isActive ? styles.active : styles.dialog)}
       >
         {name}
       </NavLink>

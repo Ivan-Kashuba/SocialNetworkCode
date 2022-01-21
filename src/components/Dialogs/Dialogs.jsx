@@ -3,7 +3,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-const Dialogs = ({ state, onMessageChange, onCreateMessage }) => {
+const Dialogs = ({ state, onMessageChange, onCreateMessage, isAuth }) => {
   const dialogs = state.dialogsData.map((dialog) => (
     <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />
   ));

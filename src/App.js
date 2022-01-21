@@ -1,7 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -9,7 +10,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 function App() {
   return (
     <div className="app__wrapper">
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className="app__wrapper__content">
         <Switch>
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/users">
             <UsersContainer />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </div>
