@@ -8,9 +8,9 @@ import { TextArea } from "../../common/FormControls/FormsControls";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const maxLegth10 = maxLengthCreator(10);
+const maxLegth10 = maxLengthCreator(100);
 
-const MyPosts = ({ postData, addPost }) => {
+const MyPosts = React.memo(({ postData, addPost }) => {
   const posts = postData.map((post) => (
     <Post message={post.message} likeCount={post.likeCount} key={post.id} />
   ));
@@ -28,7 +28,7 @@ const MyPosts = ({ postData, addPost }) => {
       </div>
     </>
   );
-};
+});
 
 export default MyPosts;
 

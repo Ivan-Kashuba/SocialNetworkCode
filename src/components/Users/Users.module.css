@@ -2,11 +2,3 @@
   width: 130px;
   height: 130px;
 }
-
-.selectedPage {
-  font-weight: bold;
-}
-.pageNumber {
-  margin: 5px;
-  cursor: pointer;
-}
