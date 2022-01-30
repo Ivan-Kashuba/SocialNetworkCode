@@ -1,9 +1,17 @@
-import React from "react";
-import Preloader from "../../../common/preloader/Preloader";
+import React, { useState } from "react";
+import Preloader from "../../common/preloader/Preloader";
+import ProfileDataForm from "./ProfileDataForm";
+import ProfileData from "./ProfileData";
 import styles from "./ProfileInfo.module.css";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 
 const ProfileInfo = (props) => {
+  const [editMode, setEditMode] = useState(false);
+
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
+
   if (!props.profile) {
     return <Preloader />;
   }
@@ -13,15 +21,13 @@ const ProfileInfo = (props) => {
       props.savePhoto(event.target.files[0]);
     }
   };
+
+  const onSubmit = (formData) => {
+    props.saveProfile(formData).then(() => setEditMode(false));
+  };
+
   return (
     <div>
-      <div>
-        <img
-          className={styles.contentImg}
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzQmuasfK1qjFkjJL-4h21Yps4e3i0fpHBBQ&usqp=CAU"
-          alt="img"
-        />
-      </div>
       <div className={styles.description__block}>
         <img
           src={
@@ -32,10 +38,24 @@ const ProfileInfo = (props) => {
           className={styles.profileAvatar}
         />
         {props.isOwner && <input type="file" onChange={onMainPhotoSelected} />}
+
         <ProfileStatuswithHooks
           status={props.status}
           updateStatusThunk={props.updateStatusThunk}
         />
+        {editMode ? (
+          <ProfileDataForm
+            initialValues={props.profile}
+            onSubmit={onSubmit}
+            profile={props.profile}
+          />
+        ) : (
+          <ProfileData
+            profile={props.profile}
+            isOwner={props.isOwner}
+            activateEditMode={activateEditMode}
+          />
+        )}
       </div>
     </div>
   );

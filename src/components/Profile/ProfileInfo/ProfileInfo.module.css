@@ -1,8 +1,3 @@
-.contentImg {
-  width: 100%;
-  height: 300px;
-}
-
 .description__block {
   padding: 10px;
 }
@@ -10,4 +5,7 @@
 .profileAvatar {
   width: 250px;
   height: 250px;
+}
+.contact {
+  padding-left: 10px;
 }
