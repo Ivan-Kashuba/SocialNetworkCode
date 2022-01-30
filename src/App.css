@@ -13,3 +13,7 @@
   grid-area: c;
   background-color: burlywood;
 }
+body {
+  margin: 0;
+  padding: 0;
+}

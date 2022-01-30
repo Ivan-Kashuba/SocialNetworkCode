@@ -29,10 +29,19 @@ const LoginForm = (props) => {
         <Field type="checkbox" name="rememberMe" component={Input} />
         remember me
       </div>
+      {props.captchaUrl && <img src={props.captchaUrl} alt="captcha"></img>}
+      {props.captchaUrl && (
+        <Field
+          placeholder="Put this captcha"
+          name="captcha"
+          type="text"
+          component={Input}
+          validate={[required]}
+        />
+      )}
+
       {props.error && (
-        <div className={styles.formSummaryError}>
-          Login or password is uncorrect
-        </div>
+        <div className={styles.formSummaryError}>{props.error}</div>
       )}
       <div>
         <button type="submit">Login</button>

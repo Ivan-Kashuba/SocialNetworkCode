@@ -11,6 +11,8 @@ import { compose } from "redux";
 import { initializeApp } from "./MyRedux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 import { withSuspense } from "./hoc/withSuspense";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import NotFoundError from "./components/404/NotFoundError";
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
 );
@@ -22,6 +24,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
   }
+
   render() {
     if (!this.props.initialized) {
       return <Preloader />;
@@ -32,6 +35,9 @@ class App extends React.Component {
         <Navbar />
         <div className="app__wrapper__content">
           <Switch>
+            <Route exact path="/">
+              <Redirect from="/" to="/profile" />
+            </Route>
             <Route path="/dialogs">{withSuspense(DialogsContainer)}</Route>
             <Route path="/profile/:userId?">
               {withSuspense(ProfileContainer)}
@@ -41,6 +47,9 @@ class App extends React.Component {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="*">
+              <NotFoundError />
             </Route>
           </Switch>
         </div>
