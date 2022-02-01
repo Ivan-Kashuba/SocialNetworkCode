@@ -1,16 +1,11 @@
 import Contact from "./Contact";
+import styles from "../ProfileInfo/ProfileInfo.module.css";
 
 const ProfileData = ({ profile, isOwner, activateEditMode }) => {
   return (
     <div>
-      {isOwner && (
-        <div>
-          <button onClick={activateEditMode}>Edit</button>
-        </div>
-      )}
-      <div>{profile.fullName}</div>
       <div>
-        <b> Looking for a job </b>:{profile.lookingForAJob ? "yes" : "no"}
+        <b> Looking for a job</b>: {profile.lookingForAJob ? "yes" : "no"}
       </div>
       {profile.lookingForAJob && (
         <div>
@@ -20,7 +15,7 @@ const ProfileData = ({ profile, isOwner, activateEditMode }) => {
       <div>
         <b> About me</b>: {profile.aboutMe}
       </div>
-      <div>
+      <div className={styles.contacts}>
         <b> Contacts</b>:
         {Object.keys(profile.contacts).map((key) => {
           return (
@@ -32,6 +27,11 @@ const ProfileData = ({ profile, isOwner, activateEditMode }) => {
           );
         })}
       </div>
+      {isOwner && (
+        <div className={styles.button}>
+          <button onClick={activateEditMode}>&#9998;</button>
+        </div>
+      )}
     </div>
   );
 };

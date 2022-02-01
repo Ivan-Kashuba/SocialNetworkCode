@@ -4,6 +4,7 @@ import { reduxForm } from "redux-form";
 import LoginForm from "./LoginForm";
 import { login } from "../../MyRedux/auth-reducer";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import s from "./Login.module.css";
 
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
@@ -20,7 +21,7 @@ const Login = (props) => {
     return <Redirect to={"/profile"} />;
   }
   return (
-    <div>
+    <div className={s.login}>
       <h1>Login</h1>
       <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>

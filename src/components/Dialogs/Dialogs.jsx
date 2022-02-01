@@ -6,9 +6,9 @@ import DialogItem from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-const maxLength50 = maxLengthCreator(50);
+const maxLength100 = maxLengthCreator(100);
 
-const Dialogs = ({ state, onCreateMessage }) => {
+const Dialogs = ({ state, onCreateMessage, clearPost }) => {
   const dialogs = state.dialogsData.map((dialog) => (
     <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />
   ));
@@ -19,6 +19,7 @@ const Dialogs = ({ state, onCreateMessage }) => {
 
   let addNewMessage = (values) => {
     onCreateMessage(values.newMessageText);
+    clearPost();
   };
 
   return (
@@ -39,11 +40,11 @@ const AddMessageForm = (props) => {
     <form onSubmit={props.handleSubmit}>
       <Field
         component={TextArea}
-        validate={[required, maxLength50]}
+        validate={[required, maxLength100]}
         name="newMessageText"
       />
-      <div>
-        <button>Send</button>
+      <div className={styles.sendButton}>
+        <button>&#9993;</button>
       </div>
     </form>
   );

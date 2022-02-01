@@ -23,6 +23,7 @@ const Users = ({
       {users.map((user) => {
         return (
           <User
+            key={user.id}
             user={user}
             isfollowingInProgress={isfollowingInProgress}
             followThunk={followThunk}

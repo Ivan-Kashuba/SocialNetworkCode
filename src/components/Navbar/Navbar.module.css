@@ -1,14 +1,38 @@
 .nav {
   grid-area: n;
-  background-color: aqua;
-  padding: 20px;
+  background-color: white;
+  margin: 0 auto;
 }
 
 .item {
   text-decoration: none;
+  color: black;
+}
+
+.activeItem {
+  text-decoration: none;
+  color: lightgray;
+}
+
+.itemArea {
+  margin: 10px 0;
+  width: 200px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  height: 45px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemArea:hover {
+  background-color: lightgray;
   color: white;
 }
-.activeItem {
-  color: gold;
-  text-decoration: none;
+
+.smallIcon {
+  margin-left: 10px;
+  height: 15px;
+  width: 15px;
 }

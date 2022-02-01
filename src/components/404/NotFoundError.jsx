@@ -10,6 +10,8 @@ const NotFoundError = () => {
           <span className={styles.screen_reader_text}>0</span>
         </span>
         <span>4</span>
+        <br />
+        <div className={styles.text}>Page not Found</div>
       </section>
     </div>
   );

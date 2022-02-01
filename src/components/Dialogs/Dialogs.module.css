@@ -1,20 +1,38 @@
 .dialogs {
   display: grid;
   grid-template-columns: 2fr 10fr;
+  display: flex;
 }
 .dialogs__items {
   padding: 10px;
+  border: 10px solid white;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
 }
 .dialog {
-  color: white;
+  color: gray;
   text-decoration: none;
-}
-.messages {
-  padding: 10px;
+  margin-top: 10px;
 }
 .message {
+  margin: 5px;
 }
+.messages {
+  margin-left: 30px;
+  padding-top: 30px;
+  border: 10px solid white;
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+}
+
 .active {
-  color: gold;
+  color: lightgray;
   text-decoration: none;
+}
+
+.sendButton button {
+  font-size: 20px;
+  padding: 0 10px;
 }

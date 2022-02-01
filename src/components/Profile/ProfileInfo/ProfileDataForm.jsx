@@ -8,7 +8,6 @@ let ProfileDataForm = ({ profile, handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <button>Save</button>
         {error && <div className={styles.formSummaryError}>{error}</div>}
       </div>
       <div>
@@ -51,6 +50,9 @@ let ProfileDataForm = ({ profile, handleSubmit, error }) => {
             </div>
           );
         })}
+      </div>
+      <div className={s.button}>
+        <button>&#10004;</button>
       </div>
     </form>
   );

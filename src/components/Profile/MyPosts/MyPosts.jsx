@@ -7,26 +7,29 @@ import {
 import { TextArea } from "../../common/FormControls/FormsControls";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
+const maxLegth100 = maxLengthCreator(100);
 
-const maxLegth10 = maxLengthCreator(100);
-
-const MyPosts = React.memo(({ postData, addPost }) => {
+const MyPosts = React.memo(({ postData, addPost, profile, clearPost }) => {
   const posts = postData.map((post) => (
-    <Post message={post.message} likeCount={post.likeCount} key={post.id} />
+    <Post
+      message={post.message}
+      likeCount={post.likeCount}
+      id={post.id}
+      key={post.id}
+      icon={profile.photos.large}
+    />
   ));
-
   const createPost = (values) => {
     addPost(values.newPostText);
+    clearPost();
   };
 
   return (
-    <>
-      <div className={style.posts__block}>
-        <h3>My posts</h3>
-        <AddNewPostFormRedux onSubmit={createPost} />
-        <div className={style.posts}>{posts}</div>
-      </div>
-    </>
+    <div className={style.posts__block}>
+      <h3>My posts</h3>
+      <AddNewPostFormRedux onSubmit={createPost} />
+      <div className={style.posts}>{posts}</div>
+    </div>
   );
 });
 
@@ -39,7 +42,7 @@ const AddNewPostForm = (props) => {
         <Field
           component={TextArea}
           name="newPostText"
-          validate={[required, maxLegth10]}
+          validate={[required, maxLegth100]}
         />
       </div>
       <div>
@@ -49,6 +52,6 @@ const AddNewPostForm = (props) => {
   );
 };
 
-let AddNewPostFormRedux = reduxForm({ form: "profileAddNewPostForm" })(
+const AddNewPostFormRedux = reduxForm({ form: "profileAddNewPostForm" })(
   AddNewPostForm
 );

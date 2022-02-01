@@ -1,0 +1,15 @@
+.inputForm {
+  margin: 10px 0px;
+}
+
+.checkbox {
+  float: left;
+}
+
+.login {
+  background-color: white;
+  width: 300px;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}

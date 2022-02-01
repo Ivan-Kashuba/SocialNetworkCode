@@ -12,12 +12,11 @@ import { initializeApp } from "./MyRedux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 import { withSuspense } from "./hoc/withSuspense";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import NotFoundError from "./components/404/NotFoundError";
-const DialogsContainer = React.lazy(() =>
-  import("./components/Dialogs/DialogsContainer")
-);
-const ProfileContainer = React.lazy(() =>
-  import("./components/Profile/ProfileContainer")
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+
+const NotFoundError = React.lazy(() =>
+  import("./components/404/NotFoundError")
 );
 
 class App extends React.Component {
@@ -38,9 +37,11 @@ class App extends React.Component {
             <Route exact path="/">
               <Redirect from="/" to="/profile" />
             </Route>
-            <Route path="/dialogs">{withSuspense(DialogsContainer)}</Route>
+            <Route path="/dialogs">
+              <DialogsContainer />
+            </Route>
             <Route path="/profile/:userId?">
-              {withSuspense(ProfileContainer)}
+              <ProfileContainer />
             </Route>
             <Route path="/users">
               <UsersContainer />
@@ -48,9 +49,7 @@ class App extends React.Component {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="*">
-              <NotFoundError />
-            </Route>
+            <Route path="*">{withSuspense(NotFoundError)}</Route>
           </Switch>
         </div>
       </div>

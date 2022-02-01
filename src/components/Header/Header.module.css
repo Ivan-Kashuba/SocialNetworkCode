@@ -1,16 +1,37 @@
 .header {
   grid-area: h;
-  background-color: green;
+  background-color: #0373aa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.header img {
-  width: 30px;
-  height: 30px;
-}
+
 .loginBlock {
-  float: right;
   margin-right: 50px;
   color: white;
 }
 .loginBlock a {
   color: white;
+}
+.loginnedPhoto {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.logginedInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  margin-left: 50px;
+  width: 50px;
+  height: 40px;
+}
+.logout {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  cursor: pointer;
 }

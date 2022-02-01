@@ -2,10 +2,42 @@
   padding: 10px;
 }
 
-.profileAvatar {
-  width: 250px;
-  height: 250px;
-}
 .contact {
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.account {
+  display: flex;
+}
+.acountImage {
+  display: flex;
+  flex-direction: column;
+  border: 15px solid white;
+  background-color: white;
+  border-radius: 10px;
+}
+.account__info {
+  margin-left: 50px;
+  border: 15px solid white;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.fullName {
+  font-size: 25px;
+}
+
+.mainInfo {
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 15px;
+}
+
+.button button {
+  font-size: 20px;
+  padding: 0 10px;
+}
+.contacts {
+  margin-top: 15px;
 }

@@ -4,11 +4,11 @@ import styles from "./Users.module.css";
 
 const User = ({ user, isfollowingInProgress, followThunk, unfollowThunk }) => {
   return (
-    <div>
+    <div className={styles.user}>
       <div key={user.id}>
         <span>
           <div>
-            <NavLink to={"/profile/" + user.id}>
+            <NavLink className={styles.followButton} to={"/profile/" + user.id}>
               <img
                 className={styles.avatarUser}
                 src={
@@ -45,12 +45,10 @@ const User = ({ user, isfollowingInProgress, followThunk, unfollowThunk }) => {
 
         <span>
           <span>
-            <div>{user.name}</div>
-            <div>{user.status}</div>
-          </span>
-          <span>
-            <div>{"user.location.country"}</div>
-            <div>{"user.location.city"}</div>
+            <div>
+              <b>{user.name}</b>
+            </div>
+            <div>{user.status || <div>No status</div>}</div>
           </span>
         </span>
       </div>
