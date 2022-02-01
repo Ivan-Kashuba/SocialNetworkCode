@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Ivan-Kashuba/SocialNetworkCode/static/css/main.957d3961.css",
+    "main.js": "/Ivan-Kashuba/SocialNetworkCode/static/js/main.f80dfd1f.js",
+    "static/css/519.ec934d04.chunk.css": "/Ivan-Kashuba/SocialNetworkCode/static/css/519.ec934d04.chunk.css",
+    "static/js/519.b5195285.chunk.js": "/Ivan-Kashuba/SocialNetworkCode/static/js/519.b5195285.chunk.js",
+    "static/media/spinner.svg": "/Ivan-Kashuba/SocialNetworkCode/static/media/spinner.348e10f757c314582723844475d43958.svg",
+    "index.html": "/Ivan-Kashuba/SocialNetworkCode/index.html",
+    "main.957d3961.css.map": "/Ivan-Kashuba/SocialNetworkCode/static/css/main.957d3961.css.map",
+    "main.f80dfd1f.js.map": "/Ivan-Kashuba/SocialNetworkCode/static/js/main.f80dfd1f.js.map",
+    "519.ec934d04.chunk.css.map": "/Ivan-Kashuba/SocialNetworkCode/static/css/519.ec934d04.chunk.css.map",
+    "519.b5195285.chunk.js.map": "/Ivan-Kashuba/SocialNetworkCode/static/js/519.b5195285.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.957d3961.css",
+    "static/js/main.f80dfd1f.js"
+  ]
+}
