@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import LoginForm from "./LoginForm";
-import { login } from "../../MyRedux/auth-reducer";
+import { login } from "../../MyRedux/auth-reducer.ts";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import s from "./Login.module.css";
 
@@ -31,4 +31,5 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   captchaUrl: state.auth.captchaUrl,
 });
+
 export default connect(mapStateToProps, { login })(Login);

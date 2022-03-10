@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer";
 import { withRouter } from "react-router";
 import { compose } from "redux";
-import { initializeApp } from "./MyRedux/app-reducer";
+import { initializeApp } from "./MyRedux/app-reducer.ts";
 import Preloader from "./components/common/preloader/Preloader";
 import { withSuspense } from "./hoc/withSuspense";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";

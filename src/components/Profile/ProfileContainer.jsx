@@ -8,7 +8,7 @@ import {
   updateStatusThunk,
   savePhoto,
   saveProfile,
-} from "../../MyRedux/profile-reducer";
+} from "../../MyRedux/profile-reducer.ts";
 import { compose } from "redux";
 
 class ProfileContainer extends React.Component {

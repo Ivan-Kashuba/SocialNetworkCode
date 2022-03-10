@@ -5,7 +5,7 @@ import {
   getUsersThunkCreator,
   setCurrentPageActionCreator,
   unFollowThunkCreator,
-} from "../../MyRedux/users-reducer";
+} from "../../MyRedux/users-reducer.ts";
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 import {

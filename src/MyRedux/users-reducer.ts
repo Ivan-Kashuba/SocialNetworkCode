@@ -1,4 +1,5 @@
 import { userAPI } from "../Api/api";
+import { UserType } from "../types/types";
 import { updateObjectInArray } from "../utils/objects-helpers";
 
 const FOLLOW = "FOLLOW";
@@ -10,15 +11,17 @@ const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const FOLLOWING_IN_PROGRESS = "FOLLOWING_IN_PROGRESS";
 
 let initialState = {
-  users: [],
+  users: [] as Array<UserType>,
   pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  isfollowingInProgress: [],
+  isfollowingInProgress: [] as Array<number>, //array of usersId
 };
 
-const usersReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+const usersReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -58,33 +61,90 @@ const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
+type FollowActionCreatorType = {
+  type: typeof FOLLOW;
+  userId: number;
+};
+export const followActionCreator = (
+  userId: number
+): FollowActionCreatorType => ({
+  type: FOLLOW,
+  userId,
+});
+type UnfollowActionCreatorType = {
+  type: typeof UNFOLLOW;
+  userId: number;
+};
+export const unfollowActionCreator = (
+  userId: number
+): UnfollowActionCreatorType => ({
+  type: UNFOLLOW,
+  userId,
+});
 
-export const followActionCreator = (userId) => ({ type: FOLLOW, userId });
-export const unfollowActionCreator = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageActionCreator = (currentPage) => ({
+type SetUsersActionCreatorType = {
+  type: typeof SET_USERS;
+  users: Array<UserType>;
+};
+
+export const setUsersActionCreator = (
+  users: Array<UserType>
+): SetUsersActionCreatorType => ({
+  type: SET_USERS,
+  users,
+});
+
+type SetCurrentPageActionCreatorType = {
+  type: typeof SET_CURRENT_PAGE;
+  currentPage: number;
+};
+
+export const setCurrentPageActionCreator = (
+  currentPage: number
+): SetCurrentPageActionCreatorType => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
+
+type SetTotalUsersCountActionCreatorType = {
+  type: typeof SET_TOTAL_USERS;
+  totalUsersCount: number;
+};
+
+export const setTotalUsersCountActionCreator = (
+  totalUsersCount: number
+): SetTotalUsersCountActionCreatorType => ({
   type: SET_TOTAL_USERS,
   totalUsersCount,
 });
-export const toggleIsFetchingActionCreator = (isFetching) => ({
+
+type ToggleIsFetchingActionCreatorType = {
+  type: typeof TOGGLE_IS_FETCHING;
+  isFetching: boolean;
+};
+export const toggleIsFetchingActionCreator = (
+  isFetching: boolean
+): ToggleIsFetchingActionCreatorType => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
+
+type FollowingInProgressActionCreatorType = {
+  type: typeof FOLLOWING_IN_PROGRESS;
+  isfollowingInProgress: boolean;
+  userId: number;
+};
 export const followingInProgressActionCreator = (
-  isfollowingInProgress,
-  userId
-) => ({
+  isfollowingInProgress: boolean,
+  userId: number
+): FollowingInProgressActionCreatorType => ({
   type: FOLLOWING_IN_PROGRESS,
   isfollowingInProgress,
   userId,
 });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return async (dispatch) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFetchingActionCreator(true));
 
     let data = await userAPI.getUsers(currentPage, pageSize);
@@ -95,10 +155,10 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 };
 
 const followUnfollowFlow = async (
-  dispatch,
-  userId,
-  apiMethod,
-  actionCreator
+  dispatch: any,
+  userId: number,
+  apiMethod: any,
+  actionCreator: any
 ) => {
   dispatch(followingInProgressActionCreator(true, userId));
   let response = await apiMethod(userId);
@@ -108,16 +168,16 @@ const followUnfollowFlow = async (
   dispatch(followingInProgressActionCreator(false, userId));
 };
 
-export const followThunkCreator = (userId) => {
-  return async (dispatch) => {
+export const followThunkCreator = (userId: number) => {
+  return async (dispatch: any) => {
     let apiMethod = userAPI.follow.bind(userAPI);
     let actionCreator = followActionCreator;
     followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };
 
-export const unFollowThunkCreator = (userId) => {
-  return async (dispatch) => {
+export const unFollowThunkCreator = (userId: number) => {
+  return async (dispatch: any) => {
     let apiMethod = userAPI.unfollow.bind(userAPI);
     let actionCreator = unfollowActionCreator;
     followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
